@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -24,25 +27,16 @@ public class Main {
     return stickValues;
   }
 
-  private static int answerQuestion(int[] stickValues)
-  {
+  private static int answerQuestion(int[] stickValues) {
     int minSoFar = Integer.MAX_VALUE;
-    for (int i = 0; i < stickValues.length; i++) {
-      for (int j = i + 1; j < stickValues.length; j++) {
-        for (int k = j + 1; k < stickValues.length; k++) {
-          int median = getMedian(stickValues[i], stickValues[j], stickValues[k]);
-          int distance = Math.abs(stickValues[i] - median) + Math.abs(stickValues[j] - median) + Math.abs(stickValues[k] - median);
-          minSoFar = Math.min(minSoFar, distance);
-        }
-      }
+
+    stickValues = IntStream.of(stickValues).sorted().toArray();
+    for (int i = 1; i < stickValues.length-1; i++) {
+        int middleValue = stickValues[i];
+        int distance = Math.abs(stickValues[i-1] - middleValue) + Math.abs(stickValues[i+1] - middleValue);
+        minSoFar = Math.min(minSoFar, distance);
     }
     return minSoFar;
-  }
-
-  private static int getMedian(int i, int j, int k)
-  {
-    int[] sorted = IntStream.of(i, j, k).sorted().toArray();
-    return sorted[1];
   }
 
   private static void printResults(int[] answers)
