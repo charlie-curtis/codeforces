@@ -1,13 +1,10 @@
-package codeforces.competitions._822;
+package competitions.div2._822;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
 //This is problem A
-public class Main {
+public class A {
   public static void main(String[] args) {
 
     Scanner inputScanner = new Scanner(System.in);

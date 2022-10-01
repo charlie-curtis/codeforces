@@ -1,3 +1,5 @@
+package competitions.div2._340;
+
 import java.util.Scanner;
 import java.lang.Math;
 public class A

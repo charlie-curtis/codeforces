@@ -1,17 +1,18 @@
+package competitions.div2._340;
 import java.util.Scanner;
 public class B
 {
      public static void main(String[] args)
      {
-	  Scanner s = new Scanner(System.in); 
+	  Scanner s = new Scanner(System.in);
 	  int[] holder = new int[s.nextInt()];
 	  int currentIndex = 0;
-	  s.nextLine();//feels 
+	  s.nextLine();//feels
 	  String input = s.nextLine();
-	  
-	  input = input.replaceAll(" ", ""); 
-	 
-	  int count= 0; 
+
+	  input = input.replaceAll(" ", "");
+
+	  int count= 0;
 	  int startHere = 0;
 	  while(startHere < input.length() && input.charAt(startHere) != '1'){
 	       startHere++;
@@ -22,7 +23,7 @@ public class B
 		    holder[currentIndex] = count;
 		    currentIndex++;
 		    count = 0;
-	       } 
+	       }
 	  }
 	  int product = 1;
 	  boolean hasAone = false;
