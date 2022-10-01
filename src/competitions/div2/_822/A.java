@@ -21,7 +21,7 @@ public class A {
   private static int[] createArrayFromString(String input) {
     String[] myArray = input.split(" ");
     int[] stickValues = new int[myArray.length];
-    for (int i = 0; i< myArray.length; i++) {
+    for (int i = 0; i < myArray.length; i++) {
       stickValues[i] = Integer.parseInt(myArray[i]);
     }
     return stickValues;
@@ -31,16 +31,15 @@ public class A {
     int minSoFar = Integer.MAX_VALUE;
 
     stickValues = IntStream.of(stickValues).sorted().toArray();
-    for (int i = 1; i < stickValues.length-1; i++) {
-        int middleValue = stickValues[i];
-        int distance = Math.abs(stickValues[i-1] - middleValue) + Math.abs(stickValues[i+1] - middleValue);
-        minSoFar = Math.min(minSoFar, distance);
+    for (int i = 1; i < stickValues.length - 1; i++) {
+      int middleValue = stickValues[i];
+      int distance = Math.abs(stickValues[i - 1] - middleValue) + Math.abs(stickValues[i + 1] - middleValue);
+      minSoFar = Math.min(minSoFar, distance);
     }
     return minSoFar;
   }
 
-  private static void printResults(int[] answers)
-  {
+  private static void printResults(int[] answers) {
     for (int i = 0; i < answers.length; i++) {
       System.out.println(answers[i]);
     }
