@@ -1,34 +1,43 @@
-package Sept3022;
+package competitions.global._22;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
+import java.util.stream.LongStream;
 
 public class A {
 
+  private static Scanner sc;
+
   public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
+    sc = new Scanner(System.in);
 
     int numberOfTestCases = Integer.parseInt(sc.nextLine());
 
     long[] answers = new long[numberOfTestCases];
     for (int i = 0; i < numberOfTestCases; i++) {
-      sc.nextLine();
-      String[] typeString = sc.nextLine().split(" ");
-      String[] damageString = sc.nextLine().split(" ");
-      int[] types = new int[typeString.length];
-      int[] damages = new int[typeString.length];
-      for (int j = 0; j < damages.length; j++) {
-        types[j] = Integer.parseInt(typeString[j]);
-        damages[j] = Integer.parseInt(damageString[j]);
-      }
-      answers[i] = determineMaxDamage(types, damages);
+      answers[i] = executeTestCase();
     }
 
-    for (int i = 0; i < answers.length; i++) {
-      System.out.println(answers[i]);
-    }
+    LongStream.of(answers).forEach(System.out::println);
+  }
 
+  private static long executeTestCase()
+  {
+    int inputSize = Integer.parseInt(sc.nextLine());
+    int[] types = getIntegerArray(inputSize);
+    int[] damages = getIntegerArray(inputSize);
+    return determineMaxDamage(types, damages);
+  }
+
+  private static int[] getIntegerArray(int inputSize)
+  {
+    int[] input = new int[inputSize];
+    for (int i = 0; i < inputSize; i++) {
+      input[i] = sc.nextInt();
+    }
+    sc.nextLine();
+    return input;
   }
 
   private static long determineMaxDamage(int[] types, int[] damages) {
@@ -46,8 +55,6 @@ public class A {
 
     fireDamages.sort(Comparator.naturalOrder());
     frostDamages.sort(Comparator.naturalOrder());
-
-    //which move do i start with? the move with the least elements in the array? or the move with the lowest initial value?
 
     LastMove lastMove = null;
     boolean isFirstMove = true;
